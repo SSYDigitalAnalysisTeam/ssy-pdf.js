@@ -1,3 +1,44 @@
+# SSY Fork info
+We forked PDF.js so that we could apply a few customizations to their viewer. We're working from a branch called ssy-master. 
+
+## Maintaining our fork
+The `master` branch in our fork should be identical to `master` on the upstream mozilla repo. Because of this it should always be safe to sync `master` with the upstream and push that to our repo without doing any special testing.
+
+### Synchronizing with upstream mozilla:pdf.js
+Since master is an untouched copy of Mozilla's master we can synchronize our fork as often as we'd like with no impacts to SSY functionality.
+
+You can either use the "Sync Fork" button in the github UI
+
+OR
+
+Perform the sync manually as described below:
+
+- add upstream remote to your working copy
+    ```
+    $ git remote add upstream git@github.com:mozilla/pdf.js.git
+    $ git fetch upstream
+    ```
+- merge `upstream/master` into our fork's master (`master` not `ssy-master`)
+    ```
+    $ git switch master
+    $ git merge upstream/master
+    ```
+- push `master` up to our fork's repo
+    ```
+    $ git push master
+    ```
+
+### Changes We Have Made From Mainline
+
+* These README updates
+* We don't allow download (web/app.js)
+* We don't allow save (web/app.js)
+* Removed ability to annotate, print, download or save (various)
+* Removed dark theme (web/viewer.css)
+* Removed certain CSS classes to alter functionality
+* Added watermark (web/viewer.css)
+
+# ORIGINAL README BELOW
 # PDF.js [![Build Status](https://github.com/mozilla/pdf.js/workflows/CI/badge.svg?branch=master)](https://github.com/mozilla/pdf.js/actions?query=workflow%3ACI+branch%3Amaster)
 
 [PDF.js](https://mozilla.github.io/pdf.js/) is a Portable Document Format (PDF) viewer that is built with HTML5.
@@ -39,10 +80,10 @@ PDF.js is built into version 19+ of Firefox.
 #### Chrome
 
 + The official extension for Chrome can be installed from the [Chrome Web Store](https://chrome.google.com/webstore/detail/pdf-viewer/oemmndcbldboiebfnladdacbdfmadadm).
-*This extension is maintained by [@Rob--W](https://github.com/Rob--W).*
+  *This extension is maintained by [@Rob--W](https://github.com/Rob--W).*
 + Build Your Own - Get the code as explained below and issue `gulp chromium`. Then open
-Chrome, go to `Tools > Extension` and load the (unpackaged) extension from the
-directory `build/chromium`.
+  Chrome, go to `Tools > Extension` and load the (unpackaged) extension from the
+  directory `build/chromium`.
 
 ## Getting the Code
 
@@ -55,16 +96,11 @@ Next, install Node.js via the [official package](https://nodejs.org) or via
 [nvm](https://github.com/creationix/nvm). You need to install the gulp package
 globally (see also [gulp's getting started](https://github.com/gulpjs/gulp/tree/master/docs/getting-started)):
 
-    $ npm install -g gulp-cli@^2.3.0
-
-If you prefer to not install `gulp-cli` globally, you have to prefix all the `gulp` commands with `npx` (for example, `npx gulp server` instead of `gulp server`).
+    $ npm install -g gulp-cli
 
 If everything worked out, install all dependencies for PDF.js:
 
     $ npm install
-
-> [!NOTE]
-> On MacOS M1/M2 you may see some `node-gyp`-related errors when running `npm install`. This is because one of our dependencies, `"canvas"`, does not provide pre-built binaries for this platform and instead `npm` will try to build it from source. Please make sure to first install the necessary native dependencies using `brew`: https://github.com/Automattic/node-canvas#compiling.
 
 Finally, you need to start a local web server as some browsers do not allow opening
 PDF files using a `file://` URL. Run:
@@ -106,9 +142,9 @@ the `pdfjs-dist` name. For more information and examples please refer to the
 ## Including via a CDN
 
 PDF.js is hosted on several free CDNs:
- - https://www.jsdelivr.com/package/npm/pdfjs-dist
- - https://cdnjs.com/libraries/pdf.js
- - https://unpkg.com/pdfjs-dist/
+- https://www.jsdelivr.com/package/npm/pdfjs-dist
+- https://cdnjs.com/libraries/pdf.js
+- https://unpkg.com/pdfjs-dist/
 
 ## Learning
 

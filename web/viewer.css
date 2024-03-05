@@ -306,6 +306,7 @@ body {
 #viewerContainer:not(.pdfPresentationMode) {
   transition-duration: var(--sidebar-transition-duration);
   transition-timing-function: var(--sidebar-transition-timing-function);
+  background: url("images/ssy/SSYLogo_2Line_Blue_L.png") no-repeat center;
 }
 
 #outerContainer.sidebarOpen #viewerContainer:not(.pdfPresentationMode) {

@@ -37,6 +37,7 @@ Perform the sync manually as described below:
 * Removed dark theme (web/viewer.css)
 * Removed certain CSS classes to alter functionality
 * Added watermark (web/viewer.css)
+* Always defaults to EN-US locale
 
 # ORIGINAL README BELOW
 # PDF.js [![Build Status](https://github.com/mozilla/pdf.js/workflows/CI/badge.svg?branch=master)](https://github.com/mozilla/pdf.js/actions?query=workflow%3ACI+branch%3Amaster)

@@ -2371,27 +2371,27 @@ function webViewerSidebarViewChanged({ view }) {
 }
 
 function webViewerUpdateViewarea({ location }) {
-  if (PDFViewerApplication.isInitialViewSet) {
-    // Only update the storage when the document has been loaded *and* rendered.
-    PDFViewerApplication.store
-      ?.setMultiple({
-        page: location.pageNumber,
-        zoom: location.scale,
-        scrollLeft: location.left,
-        scrollTop: location.top,
-        rotation: location.rotation,
-      })
-      .catch(() => {
-        // Unable to write to storage.
-      });
-  }
-  if (PDFViewerApplication.appConfig.secondaryToolbar) {
-    const href = PDFViewerApplication.pdfLinkService.getAnchorUrl(
-      location.pdfOpenParams
-    );
-    PDFViewerApplication.appConfig.secondaryToolbar.viewBookmarkButton.href =
-      href;
-  }
+  // if (PDFViewerApplication.isInitialViewSet) {
+  //   // Only update the storage when the document has been loaded *and* rendered.
+  //   PDFViewerApplication.store
+  //     ?.setMultiple({
+  //       page: location.pageNumber,
+  //       zoom: location.scale,
+  //       scrollLeft: location.left,
+  //       scrollTop: location.top,
+  //       rotation: location.rotation,
+  //     })
+  //     .catch(() => {
+  //       // Unable to write to storage.
+  //     });
+  // }
+  // if (PDFViewerApplication.appConfig.secondaryToolbar) {
+  //   const href = PDFViewerApplication.pdfLinkService.getAnchorUrl(
+  //     location.pdfOpenParams
+  //   );
+  //   PDFViewerApplication.appConfig.secondaryToolbar.viewBookmarkButton.href =
+  //     href;
+  // }
 }
 
 function webViewerScrollModeChanged(evt) {

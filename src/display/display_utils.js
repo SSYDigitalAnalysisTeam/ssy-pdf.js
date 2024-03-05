@@ -405,9 +405,10 @@ class DOMCanvasFactory extends BaseCanvasFactory {
 }
 
 async function fetchData(url, type = "text") {
-  if (url["pathname"]  == '/pdfjs/web/locale/en-GB/viewer.ftl'){
+ if (url["pathname"].includes('/pdfjs/web/locale/') && url["pathname"].endsWith('/viewer.ftl')) {
     return new Promise((resolve, reject) => {
-      url = url["pathname"].replace("en-GB", "en-US");
+        url = url["pathname"].replace(/\/locale\/.*?\//, "/locale/en-US/");
+        resolve(url);
     });
   }
   if (

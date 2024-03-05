@@ -1107,6 +1107,7 @@ const PDFViewerApplication = {
   },
 
   async download(options = {}) {
+   /*Don't allow downloads of SSY Files
     const url = this._downloadUrl,
       filename = this._docFilename;
     try {
@@ -1121,9 +1122,10 @@ const PDFViewerApplication = {
       // downloading, simply download using the URL.
       await this.downloadManager.downloadUrl(url, filename, options);
     }
-  },
+  */},
 
   async save(options = {}) {
+    /*Don't allow save of SSY Files
     if (this._saveInProgress) {
       return;
     }
@@ -1157,7 +1159,7 @@ const PDFViewerApplication = {
           stats: this.pdfDocument?.annotationStorage.editorStats,
         },
       });
-    }
+    }*/
   },
 
   downloadOrSave(options = {}) {
@@ -1891,10 +1893,10 @@ const PDFViewerApplication = {
   },
 
   triggerPrinting() {
-    if (!this.supportsPrinting) {
+ /*   if (!this.supportsPrinting) {
       return;
     }
-    window.print();
+    window.print();*/
   },
 
   bindEvents() {
@@ -2208,6 +2210,7 @@ if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
     "null",
     "http://mozilla.github.io",
     "https://mozilla.github.io",
+
   ];
   // eslint-disable-next-line no-var
   var validateFileURL = function (file) {
@@ -2480,10 +2483,13 @@ function webViewerSwitchAnnotationEditorParams(evt) {
   PDFViewerApplication.pdfViewer.annotationEditorParams = evt;
 }
 function webViewerPrint() {
+/*
   PDFViewerApplication.triggerPrinting();
+*/
 }
 function webViewerDownload() {
-  PDFViewerApplication.downloadOrSave();
+  /*Don't allow download or save of SSY Files
+  PDFViewerApplication.downloadOrSave();*/
 }
 function webViewerOpenInExternalApp() {
   PDFViewerApplication.openInExternalApp();

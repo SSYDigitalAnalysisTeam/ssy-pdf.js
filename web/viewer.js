@@ -51,35 +51,17 @@ function getViewerConfiguration() {
       zoomOut: document.getElementById("zoomOut"),
       viewFind: document.getElementById("viewFind"),
       print: document.getElementById("print"),
-      editorFreeTextButton: document.getElementById("editorFreeText"),
-      editorFreeTextParamsToolbar: document.getElementById(
-        "editorFreeTextParamsToolbar"
-      ),
-      editorHighlightButton: document.getElementById("editorHighlight"),
-      editorHighlightParamsToolbar: document.getElementById(
-        "editorHighlightParamsToolbar"
-      ),
-      editorHighlightColorPicker: document.getElementById(
-        "editorHighlightColorPicker"
-      ),
-      editorInkButton: document.getElementById("editorInk"),
-      editorInkParamsToolbar: document.getElementById("editorInkParamsToolbar"),
-      editorStampButton: document.getElementById("editorStamp"),
-      editorStampParamsToolbar: document.getElementById(
-        "editorStampParamsToolbar"
-      ),
-      download: document.getElementById("download"),
     },
     secondaryToolbar: {
       toolbar: document.getElementById("secondaryToolbar"),
       toggleButton: document.getElementById("secondaryToolbarToggle"),
       presentationModeButton: document.getElementById("presentationMode"),
-      openFileButton:
+      /*openFileButton:
         typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")
           ? document.getElementById("secondaryOpenFile")
           : null,
       printButton: document.getElementById("secondaryPrint"),
-      downloadButton: document.getElementById("secondaryDownload"),
+      downloadButton: document.getElementById("secondaryDownload"),*/
       viewBookmarkButton: document.getElementById("viewBookmark"),
       firstPageButton: document.getElementById("firstPage"),
       lastPageButton: document.getElementById("lastPage"),

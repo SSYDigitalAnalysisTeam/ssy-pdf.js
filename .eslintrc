@@ -1,7 +1,7 @@
 {
   "parserOptions": {
     "ecmaVersion": 2022,
-    "sourceType": "module",
+    "sourceType": "module"
   },
 
   "plugins": [
@@ -10,7 +10,7 @@
     "mozilla",
     "no-unsanitized",
     "sort-exports",
-    "unicorn",
+    "unicorn"
   ],
 
   "extends": [
@@ -26,7 +26,7 @@
 
   "globals": {
     "PDFJSDev": "readonly",
-    "__non_webpack_import__": "readonly",
+    "__non_webpack_import__": "readonly"
   },
 
   "rules": {

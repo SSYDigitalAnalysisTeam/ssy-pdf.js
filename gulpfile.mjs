@@ -1065,7 +1065,6 @@ gulp.task(
   "generic",
   gulp.series(
     createBuildNumber,
-    "locale",
     function scriptingGeneric() {
       const defines = { ...DEFINES, GENERIC: true };
       return merge([

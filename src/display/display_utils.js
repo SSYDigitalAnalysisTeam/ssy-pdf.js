@@ -405,6 +405,11 @@ class DOMCanvasFactory extends BaseCanvasFactory {
 }
 
 async function fetchData(url, type = "text") {
+  if (url["pathname"]  == '/pdfjs/web/locale/en-GB/viewer.ftl'){
+    return new Promise((resolve, reject) => {
+      url = url["pathname"].replace("en-GB", "en-US");
+    });
+  }
   if (
     (typeof PDFJSDev !== "undefined" && PDFJSDev.test("MOZCENTRAL")) ||
     isValidFetchUrl(url, document.baseURI)

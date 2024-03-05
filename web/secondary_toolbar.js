@@ -66,8 +66,6 @@ class SecondaryToolbar {
         eventName: "presentationmode",
         close: true,
       },
-      { element: options.printButton, eventName: "print", close: true },
-      { element: options.downloadButton, eventName: "download", close: true },
       { element: options.viewBookmarkButton, eventName: null, close: true },
       { element: options.firstPageButton, eventName: "firstpage", close: true },
       { element: options.lastPageButton, eventName: "lastpage", close: true },
@@ -141,13 +139,13 @@ class SecondaryToolbar {
         close: true,
       },
     ];
-    if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
+    /*if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
       buttons.push({
         element: options.openFileButton,
         eventName: "openfile",
         close: true,
       });
-    }
+    }*/
 
     this.eventBus = eventBus;
     this.opened = false;

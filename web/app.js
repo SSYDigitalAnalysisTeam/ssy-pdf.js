@@ -63,7 +63,7 @@ import { OverlayManager } from "./overlay_manager.js";
 import { PasswordPrompt } from "./password_prompt.js";
 import { PDFAttachmentViewer } from "web-pdf_attachment_viewer";
 import { PDFCursorTools } from "web-pdf_cursor_tools";
-import { PDFDocumentProperties } from "web-pdf_document_properties";
+// import { PDFDocumentProperties } from "web-pdf_document_properties";
 import { PDFFindBar } from "web-pdf_find_bar";
 import { PDFFindController } from "./pdf_find_controller.js";
 import { PDFHistory } from "./pdf_history.js";
@@ -105,8 +105,8 @@ const PDFViewerApplication = {
   pdfRenderingQueue: null,
   /** @type {PDFPresentationMode} */
   pdfPresentationMode: null,
-  /** @type {PDFDocumentProperties} */
-  pdfDocumentProperties: null,
+  // /** @type {PDFDocumentProperties} */
+  // pdfDocumentProperties: null,
   /** @type {PDFLinkService} */
   pdfLinkService: null,
   /** @type {PDFHistory} */
@@ -484,15 +484,15 @@ const PDFViewerApplication = {
       }
     }
 
-    if (appConfig.documentProperties) {
-      this.pdfDocumentProperties = new PDFDocumentProperties(
-        appConfig.documentProperties,
-        this.overlayManager,
-        eventBus,
-        l10n,
-        /* fileNameLookup = */ () => this._docFilename
-      );
-    }
+    // if (appConfig.documentProperties) {
+    //   this.pdfDocumentProperties = new PDFDocumentProperties(
+    //     appConfig.documentProperties,
+    //     this.overlayManager,
+    //     eventBus,
+    //     l10n,
+    //     /* fileNameLookup = */ () => this._docFilename
+    //   );
+    // }
 
     // NOTE: The cursor-tools are unlikely to be helpful/useful in GeckoView,
     // in particular the `HandTool` which basically simulates touch scrolling.
@@ -976,7 +976,7 @@ const PDFViewerApplication = {
       this.pdfThumbnailViewer?.setDocument(null);
       this.pdfViewer.setDocument(null);
       this.pdfLinkService.setDocument(null);
-      this.pdfDocumentProperties?.setDocument(null);
+      // this.pdfDocumentProperties?.setDocument(null);
     }
     this.pdfLinkService.externalLinkEnabled = true;
     this.store = null;
@@ -1285,7 +1285,7 @@ const PDFViewerApplication = {
     } else {
       this.pdfLinkService.setDocument(pdfDocument);
     }
-    this.pdfDocumentProperties?.setDocument(pdfDocument);
+    // this.pdfDocumentProperties?.setDocument(pdfDocument);
 
     const pdfViewer = this.pdfViewer;
     pdfViewer.setDocument(pdfDocument);
@@ -1947,7 +1947,7 @@ const PDFViewerApplication = {
     eventBus._on("scrollmodechanged", webViewerScrollModeChanged);
     eventBus._on("switchspreadmode", webViewerSwitchSpreadMode);
     eventBus._on("spreadmodechanged", webViewerSpreadModeChanged);
-    eventBus._on("documentproperties", webViewerDocumentProperties);
+    // eventBus._on("documentproperties", webViewerDocumentProperties);
     eventBus._on("findfromurlhash", webViewerFindFromUrlHash);
     eventBus._on("updatefindmatchescount", webViewerUpdateFindMatchesCount);
     eventBus._on("updatefindcontrolstate", webViewerUpdateFindControlState);
@@ -2083,7 +2083,7 @@ const PDFViewerApplication = {
     eventBus._off("scrollmodechanged", webViewerScrollModeChanged);
     eventBus._off("switchspreadmode", webViewerSwitchSpreadMode);
     eventBus._off("spreadmodechanged", webViewerSpreadModeChanged);
-    eventBus._off("documentproperties", webViewerDocumentProperties);
+    // eventBus._off("documentproperties", webViewerDocumentProperties);
     eventBus._off("findfromurlhash", webViewerFindFromUrlHash);
     eventBus._off("updatefindmatchescount", webViewerUpdateFindMatchesCount);
     eventBus._off("updatefindcontrolstate", webViewerUpdateFindControlState);
@@ -2553,9 +2553,9 @@ function webViewerSwitchScrollMode(evt) {
 function webViewerSwitchSpreadMode(evt) {
   PDFViewerApplication.pdfViewer.spreadMode = evt.mode;
 }
-function webViewerDocumentProperties() {
-  PDFViewerApplication.pdfDocumentProperties?.open();
-}
+// function webViewerDocumentProperties() {
+//   PDFViewerApplication.pdfDocumentProperties?.open();
+// }
 
 function webViewerFindFromUrlHash(evt) {
   PDFViewerApplication.eventBus.dispatch("find", {

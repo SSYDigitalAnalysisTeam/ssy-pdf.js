@@ -131,11 +131,11 @@ class SecondaryToolbar {
         eventDetails: { mode: SpreadMode.EVEN },
         close: true,
       },
-      {
-        element: options.documentPropertiesButton,
-        eventName: "documentproperties",
-        close: true,
-      },
+      // {
+      //   element: options.documentPropertiesButton,
+      //   eventName: "documentproperties",
+      //   close: true,
+      // },
     ];
     /*if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
       buttons.push({

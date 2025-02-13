@@ -2210,6 +2210,9 @@ if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
     "null",
     "http://mozilla.github.io",
     "https://mozilla.github.io",
+    "https://ssywebcontent.blob.core.windows.net",
+    "http://ssywebcontent.blob.core.windows.net",
+    "http://localhost:8888",
 
   ];
   // eslint-disable-next-line no-var
@@ -2224,10 +2227,14 @@ if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
         return;
       }
       const fileOrigin = new URL(file, window.location.href).origin;
+      if (HOSTED_VIEWER_ORIGINS.includes(fileOrigin)) {
+        // File is hosted on an allowed origin, allow for it
+        return;
+      }
       // Removing of the following line will not guarantee that the viewer will
       // start accepting URLs from foreign origin -- CORS headers on the remote
       // server must be properly configured.
-      if (fileOrigin !== viewerOrigin) {
+      if (!HOSTED_VIEWER_ORIGINS.includes(fileOrigin) || fileOrigin !== viewerOrigin) {
         throw new Error("file origin does not match viewer's");
       }
     } catch (ex) {

@@ -2215,6 +2215,13 @@ if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
     "http://localhost:8888",
 
   ];
+
+  try{
+    var LOCAL_AUTO_DETECT_ORIGIN = window.location.origin;
+    HOSTED_VIEWER_ORIGINS.push(LOCAL_AUTO_DETECT_ORIGIN);
+  }catch(e){
+    console.log("Can't get window.location.origin, " + e);
+  }
   // eslint-disable-next-line no-var
   var validateFileURL = function (file) {
     if (!file) {

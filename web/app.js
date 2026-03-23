@@ -2468,6 +2468,16 @@ if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
     "http://mozilla.github.io",
     "https://mozilla.github.io",
   ]);
+  for (const origin of [
+    ...(Array.isArray(globalThis.PDFJS_EXTRA_ALLOWED_VIEWER_ORIGINS)
+      ? globalThis.PDFJS_EXTRA_ALLOWED_VIEWER_ORIGINS
+      : []),
+    URL.parse(window.location)?.origin,
+  ]) {
+    if (typeof origin === "string" && origin) {
+      HOSTED_VIEWER_ORIGINS.add(origin);
+    }
+  }
   // eslint-disable-next-line no-var
   var validateFileURL = function (file) {
     if (!file) {

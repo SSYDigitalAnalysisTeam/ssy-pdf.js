@@ -42,11 +42,13 @@ See https://github.com/adobe-type-tools/cmap-resources
     <!--<link rel="localization" href="toolkit/pdfviewer/viewer.ftl"/>-->
     <!--#else-->
     <link rel="stylesheet" href="viewer.css" />
+    <link rel="stylesheet" href="ssy_viewer.css" />
     <!--#endif-->
 
     <!--#if MOZCENTRAL-->
     <!--<script src="resource://pdf.js/web/viewer.mjs" type="module"></script>-->
     <!--#elif !MOZCENTRAL-->
+    <!--<script src="ssy_customizations.mjs" type="module"></script>-->
     <!--<script src="viewer.mjs" type="module"></script>-->
     <!--#elif /* Development mode. */-->
     <link rel="resource" type="application/l10n" href="locale/locale.json" />
@@ -93,6 +95,7 @@ See https://github.com/adobe-type-tools/cmap-resources
         }
       }
     </script>
+    <script src="ssy_customizations.mjs" type="module"></script>
     <script src="viewer.js" type="module"></script>
     <!--#endif-->
   </head>
@@ -614,6 +617,33 @@ See https://github.com/adobe-type-tools/cmap-resources
 
                   <button id="downloadButton" class="toolbarButton" type="button" tabindex="0" data-l10n-id="pdfjs-save-button">
                     <span data-l10n-id="pdfjs-save-button-label"></span>
+                  </button>
+                </div>
+
+                <div class="verticalToolbarSeparator hiddenMediumView"></div>
+
+                <div id="ssyScrollModeGroup" class="toolbarHorizontalGroup hiddenMediumView" role="radiogroup" aria-label="SSY scroll mode">
+                  <button
+                    id="ssyScrollVerticalButton"
+                    class="toolbarButton toggled"
+                    type="button"
+                    tabindex="0"
+                    data-l10n-id="pdfjs-scroll-vertical-button"
+                    role="radio"
+                    aria-checked="true"
+                  >
+                    <span data-l10n-id="pdfjs-scroll-vertical-button-label"></span>
+                  </button>
+                  <button
+                    id="ssyScrollHorizontalButton"
+                    class="toolbarButton"
+                    type="button"
+                    tabindex="0"
+                    data-l10n-id="pdfjs-scroll-horizontal-button"
+                    role="radio"
+                    aria-checked="false"
+                  >
+                    <span data-l10n-id="pdfjs-scroll-horizontal-button-label"></span>
                   </button>
                 </div>
 

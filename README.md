@@ -1,3 +1,26 @@
+# SSY Fork Info
+
+This repository keeps two distinct lines of work:
+
+- `master` mirrors Mozilla upstream and should stay close to `upstream/master`.
+- `ssy-master` is the SSY product branch and should be rebased or replayed from a stable upstream tag plus the SSY overlay files.
+
+## Maintaining the fork
+
+The old 4.x-era direct edits are no longer the source of truth for SSY behavior. SSY customizations now live in:
+
+- `web/ssy_customizations.mjs`
+- `web/ssy_customizations_utils.js`
+- `web/ssy_viewer.css`
+
+When refreshing SSY, start from an upstream stable tag, keep `master` as the upstream mirror, and replay the SSY overlay layer instead of re-forking core viewer files.
+
+To stage the deployable hosted-viewer payload, run:
+
+- `npx gulp ssy-dist`
+
+This writes the curated SSY deploy output to `build/ssy-dist/`, with `version.json` at the deploy root.
+
 # PDF.js [![CI](https://github.com/mozilla/pdf.js/actions/workflows/ci.yml/badge.svg?query=branch%3Amaster)](https://github.com/mozilla/pdf.js/actions/workflows/ci.yml?query=branch%3Amaster)
 
 [PDF.js](https://mozilla.github.io/pdf.js/) is a Portable Document Format (PDF) viewer that is built with HTML5.

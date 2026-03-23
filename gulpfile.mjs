@@ -39,6 +39,10 @@ import { preprocess } from "./external/builder/builder.mjs";
 import relative from "metalsmith-html-relative";
 import rename from "gulp-rename";
 import replace from "gulp-replace";
+import {
+  getSsyDistBuildGlobPatterns,
+  getSsyDistGlobPatterns,
+} from "./web/ssy_dist_manifest.js";
 import stream from "stream";
 import TerserPlugin from "terser-webpack-plugin";
 import Vinyl from "vinyl";
@@ -66,13 +70,17 @@ const MINIFIED_LEGACY_DIR = BUILD_DIR + "minified-legacy/";
 const JSDOC_BUILD_DIR = BUILD_DIR + "jsdoc/";
 const GH_PAGES_DIR = BUILD_DIR + "gh-pages/";
 const DIST_DIR = BUILD_DIR + "dist/";
+const SSY_DIST_DIR = BUILD_DIR + "ssy-dist/";
 const TYPES_DIR = BUILD_DIR + "types/";
 const TMP_DIR = BUILD_DIR + "tmp/";
 const PREFSTEST_DIR = BUILD_DIR + "prefstest/";
 const TYPESTEST_DIR = BUILD_DIR + "typestest/";
 const COMMON_WEB_FILES = [
-  "web/images/*.{png,svg,gif}",
+  "web/images/**/*.{png,svg,gif}",
   "web/debugger.{css,mjs}",
+  "web/ssy_customizations.mjs",
+  "web/ssy_customizations_utils.js",
+  "web/ssy_viewer.css",
 ];
 const MOZCENTRAL_DIFF_FILE = "mozcentral.diff";
 
@@ -2407,6 +2415,28 @@ gulp.task(
     }
     safeSpawnSync("npm", ["install", distPath], opts);
     done();
+  })
+);
+
+gulp.task(
+  "ssy-dist",
+  gulp.series("generic", function createSsyDist() {
+    fs.rmSync(SSY_DIST_DIR, { recursive: true, force: true });
+    fs.mkdirSync(SSY_DIST_DIR, { recursive: true });
+
+    return ordered([
+      gulp.src(getSsyDistGlobPatterns(GENERIC_DIR), {
+        base: GENERIC_DIR,
+        encoding: false,
+        removeBOM: false,
+      }),
+      gulp.src(getSsyDistBuildGlobPatterns(BUILD_DIR), {
+        base: BUILD_DIR,
+        encoding: false,
+        removeBOM: false,
+      }),
+    ])
+      .pipe(gulp.dest(SSY_DIST_DIR));
   })
 );
 
